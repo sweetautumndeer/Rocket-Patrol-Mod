@@ -5,9 +5,10 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', './assets/rocket.png');
-        this.load.image('spaceship', './assets/spaceship.png');
+        this.load.image('rocket', './assets/wizard.png');
+        this.load.image('spaceship', './assets/fireball.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.image('embers', './assets/embers.png');
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
       }
@@ -33,8 +34,8 @@ class Play extends Phaser.Scene {
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
 
-        // add particle emitter
-        this.particles = this.add.particles('sparks');
+        // add particle emitter for fireball explosions
+        this.particles = this.add.particles('embers');
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -133,11 +134,24 @@ class Play extends Phaser.Scene {
         // create explosion sprite at ship's position
         let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
         boom.anims.play('explode');             // play explode animation
-        boom.on('animationcomplete', () => {    // callback after anim completes
-          ship.reset();                         // reset ship position
-          ship.alpha = 1;                       // make ship visible again
+        boom.on('animationcomplete', () => {    // callback after anim complete
           boom.destroy();                       // remove explosion sprite
         });    
+        // create explosion particles at ships position
+        this.explosionEmitter = this.particles.createEmitter({
+            x: ship.x,
+            y: ship.y,
+            quanitity: 5,
+            speed: { random: [50, 100] },
+            lifespan: { random: [200, 400] },
+            scale: { random: true, start: 1, end: 0 },
+            rotate: { random: true, start: 0, end: 180 },
+            angle: { random: true, start: 0, end: 270 },
+            blendMode: 'ADD',
+            maxParticles: 25,
+        });
+        ship.reset();                         // reset ship position
+        ship.alpha = 1; 
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;  
