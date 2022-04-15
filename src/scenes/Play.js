@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------------------
+// Autumn Moulios
+// Last Updated: 4/14/2022 4:16 PM
+//
+// Original Rocket Patrol Clone code by Nathan Altice
+// -----------------------------------------------------------------------------------------
+
 class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
@@ -18,7 +25,7 @@ class Play extends Phaser.Scene {
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
 
         // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
+        //this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
 
         // white borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
@@ -27,7 +34,7 @@ class Play extends Phaser.Scene {
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
 
         // add rocket (p1)
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding - 25, 'rocket').setOrigin(0.5, 0);
 
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
@@ -57,8 +64,8 @@ class Play extends Phaser.Scene {
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#AA11AA',
+            color: '#FF77FF',
             align: 'right',
             padding: {
                 top: 5,
@@ -90,7 +97,7 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        this.starfield.tilePositionX -= 4;
+        this.starfield.tilePositionX -= 0.25;
 
         if (!this.gameOver) {
             // update player
@@ -130,13 +137,7 @@ class Play extends Phaser.Scene {
 
     shipExplode(ship) {
         // temporarily hide ship
-        ship.alpha = 0;
-        // create explosion sprite at ship's position
-        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
-        boom.anims.play('explode');             // play explode animation
-        boom.on('animationcomplete', () => {    // callback after anim complete
-          boom.destroy();                       // remove explosion sprite
-        });    
+        ship.alpha = 0;  
         // create explosion particles at ships position
         this.explosionEmitter = this.particles.createEmitter({
             x: ship.x,

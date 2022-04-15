@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------------------
+// Autumn Moulios
+// Last Updated: 4/14/2022 4:16 PM
+//
+// Original Rocket Patrol Clone code by Nathan Altice
+// -----------------------------------------------------------------------------------------
+
 // Spaceship prefab
 class Spaceship extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame, pointValue) {
