@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------------------
 // Autumn Moulios
-// Last Updated: 4/14/2022 4:16 PM
+// Last Updated: 4/14/2022 6:05 PM
 //
 // Original Rocket Patrol Clone code by Nathan Altice
 // -----------------------------------------------------------------------------------------
@@ -16,6 +16,7 @@ class Play extends Phaser.Scene {
         this.load.image('spaceship', './assets/fireball.png');
         this.load.image('starfield', './assets/starfield.png');
         this.load.image('embers', './assets/embers.png');
+        this.load.spritesheet('iceshard', './assets/iceshard.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 6});
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
       }
@@ -34,7 +35,7 @@ class Play extends Phaser.Scene {
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
 
         // add rocket (p1)
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding - 25, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding - 25, 'iceshard').setOrigin(0.5, 0);
 
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
@@ -56,6 +57,12 @@ class Play extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0 }),
             frameRate: 30
         });
+        this.anims.create({
+            key: 'ice',
+            frames: this.anims.generateFrameNumbers('iceshard', { start: 0, end: 6, first: 0 }),
+            frameRate: 30,
+            repeat: -1
+        })
 
         // initialize score
         this.p1Score = 0;
