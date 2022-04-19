@@ -1,6 +1,8 @@
 // -----------------------------------------------------------------------------------------
 // Autumn Moulios
-// Last Updated: 4/14/2022 4:16 PM
+// Wizard Patrol
+// Last Updated: 4/18/2022
+// Time taken on project: 7 or 8 ish hours.
 //
 // Original Rocket Patrol Clone code by Nathan Altice
 //
@@ -12,6 +14,8 @@
 // Credits:
 // https://freesound.org/people/EminYILDIRIM/sounds/536925/
 // User EminYILDRIM on freesound.org for a bit of ice sfx used as a layer in Ice.wav
+//
+// Time Taken: 
 // -----------------------------------------------------------------------------------------
 
 let config = {

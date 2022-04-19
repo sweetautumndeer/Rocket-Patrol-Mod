@@ -1,4 +1,9 @@
 # Rocket-Patrol-Mod
+Autumn Moulios
+Wizard Patrol
+4/18/2022
+Time taken on project: 7 or 8 ish hours.
+
 Mods Included:
 - Redesign the game's artwork, UI, and sound to change its theme/aesthetic (to something other than sci-fi) (60)
 - Implement mouse control for player movement and mouse click to fire (20)
