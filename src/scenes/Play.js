@@ -104,7 +104,7 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        this.starfield.tilePositionX -= 0.25;
+        this.starfield.tilePositionX -= 1;
 
         if (!this.gameOver) {
             // update player
