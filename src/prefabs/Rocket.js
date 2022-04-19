@@ -47,6 +47,7 @@ class Rocket extends Phaser.GameObjects.Sprite {
         !this.isFiring) {
             this.isFiring = true;
             this.visible = true;
+            this.play('ice');
             this.sfxRocket.play();
         }
         // if fired, move up
