@@ -146,6 +146,7 @@ class Play extends Phaser.Scene {
         // temporarily hide ship
         ship.alpha = 0;  
         // create explosion particles at ships position
+        console.log("particles spawned");
         this.explosionEmitter = this.particles.createEmitter({
             x: ship.x,
             y: ship.y,
@@ -156,7 +157,7 @@ class Play extends Phaser.Scene {
             rotate: { random: true, start: 0, end: 180 },
             angle: { random: true, start: 0, end: 270 },
             blendMode: 'ADD',
-            maxParticles: 25,
+            maxParticles: 17,
         });
         ship.reset();                         // reset ship position
         ship.alpha = 1; 
