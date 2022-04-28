@@ -3,6 +3,7 @@
 // Last Updated: 4/18/2022
 //
 // Original Rocket Patrol Clone code by Nathan Altice
+//annie is also here
 // -----------------------------------------------------------------------------------------
 
 class Play extends Phaser.Scene {
@@ -12,10 +13,10 @@ class Play extends Phaser.Scene {
 
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', './assets/wizard.png');
+        this.load.image('rocket', './assets/mikuWiz.png');
         this.load.image('spaceship', './assets/fireball.png');
         this.load.image('starfield', './assets/starfield.png');
-        this.load.image('embers', './assets/embers.png');
+        this.load.image('embers', './assets/cubePink.png');
         this.load.spritesheet('iceshard', './assets/iceshard.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 6});
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
